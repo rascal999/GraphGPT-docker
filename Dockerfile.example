@@ -1,0 +1,11 @@
+FROM node
+
+WORKDIR /root
+
+RUN git clone https://github.com/varunshenoy/GraphGPT.git
+RUN cd GraphGPT && npm install
+# Replace XXX with your OpenAI API key
+RUN sed -i "s/YOUR OPENAI API KEY/XXX/g" /root/GraphGPT/src/App.js
+
+WORKDIR /root/GraphGPT
+CMD ["/usr/local/bin/npm","run","start"]
